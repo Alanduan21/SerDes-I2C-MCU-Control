@@ -1,0 +1,58 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "gpio_toggle_output_LP_MSPM0L1306_nortos_ticlang",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "gpio_toggle_output_LP_MSPM0L1306_nortos_ticlang",
+                "resourceId": "/gpio_toggle_output_LP_MSPM0L1306_nortos_ticlang"
+            },
+            "connections": [
+                {
+                    "name": "Texas Instruments XDS110 USB Debug Probe",
+                    "cores": [
+                        {
+                            "name": "CORTEX_M0P",
+                            "debuggerSettings": {
+                                "data": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\" ?>\n<PropertyValues>\n\n  <property id=\"AddCIOBreakpointAfterLoad\">\n    <curValue>1</curValue>\n  </property>\n\n  <property id=\"AutoRunToLabelName\">\n    <curValue></curValue>\n  </property>\n\n  <property id=\"AutoRunToLabelOnRestart\">\n    <curValue>1</curValue>\n  </property>\n\n  <property id=\"FlashFiles\">\n    <curValue></curValue>\n  </property>\n\n</PropertyValues>\n"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "i2c_target_rw_multibyte_fifo_poll_LP_MSPM0L1306_nortos_ticlang",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "i2c_target_rw_multibyte_fifo_poll_LP_MSPM0L1306_nortos_ticlang",
+                "resourceId": "/i2c_target_rw_multibyte_fifo_poll_LP_MSPM0L1306_nortos_ticlang"
+            }
+        },
+        {
+            "name": "i2c_controller_rw_multibyte_fifo_poll_LP_MSPM0L1306_nortos_ticlang",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "i2c_controller_rw_multibyte_fifo_poll_LP_MSPM0L1306_nortos_ticlang",
+                "resourceId": "/i2c_controller_rw_multibyte_fifo_poll_LP_MSPM0L1306_nortos_ticlang"
+            },
+            "connections": [
+                {
+                    "name": "Texas Instruments XDS110 USB Debug Probe",
+                    "cores": [
+                        {
+                            "name": "CORTEX_M0P",
+                            "debuggerSettings": {
+                                "data": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\" ?>\n<PropertyValues>\n\n  <property id=\"ClearBreakpointsOnLoad\">\n    <curValue>1</curValue>\n  </property>\n\n  <property id=\"AddCEXITbreakpointAfterLoad\">\n    <curValue>1</curValue>\n  </property>\n\n  <property id=\"AddCIOBreakpointAfterLoad\">\n    <curValue>1</curValue>\n  </property>\n\n  <property id=\"HaltOnConnect\">\n    <curValue>0</curValue>\n  </property>\n\n  <property id=\"FlashFiles\">\n    <curValue></curValue>\n  </property>\n\n</PropertyValues>\n"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
