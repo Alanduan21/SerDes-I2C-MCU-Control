@@ -2,6 +2,8 @@
 #include <string.h>
 #include "ti_msp_dl_config.h"
 
+
+
 /* This results in approximately 0.5s of delay assuming 32MHz CPU_CLK */
 #define DELAY (4000000)
 
