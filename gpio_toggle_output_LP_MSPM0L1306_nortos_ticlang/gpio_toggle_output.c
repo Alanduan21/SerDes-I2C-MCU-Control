@@ -24,6 +24,8 @@ void uart_debug(const char *str){
     }
 }
 
+// toggle the target pin
+
 void test_target(uint32_t pins){
     DL_GPIO_togglePins(GPIO_TEST_PORT,pins);
 }
@@ -44,7 +46,7 @@ int main(void)
 
     printf("initialised...\n");
     while (1) 
-    {
+    {   
         delay_cycles(4000000);
         test_target(GPIO_TEST_targetPin_PIN);
 
