@@ -26,3 +26,5 @@
 
 **/.clangd/
 **/.clangd/.cache/
+
+.theia/

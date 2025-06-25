@@ -24,15 +24,6 @@
             ]
         },
         {
-            "name": "i2c_target_rw_multibyte_fifo_poll_LP_MSPM0L1306_nortos_ticlang",
-            "type": "ccs-debug",
-            "request": "launch",
-            "projectInfo": {
-                "name": "i2c_target_rw_multibyte_fifo_poll_LP_MSPM0L1306_nortos_ticlang",
-                "resourceId": "/i2c_target_rw_multibyte_fifo_poll_LP_MSPM0L1306_nortos_ticlang"
-            }
-        },
-        {
             "name": "i2c_controller_rw_multibyte_fifo_poll_LP_MSPM0L1306_nortos_ticlang",
             "type": "ccs-debug",
             "request": "launch",
