@@ -30,6 +30,13 @@ int main(void)
 {
     SYSCFG_DL_init();
 
+    /// initial debug printf
+    ///////////////////////////////////////////////////////
+    uart_debug("Target is ready!\r\n");
+
+    ///////////////////////////////////////////////////////
+
+
     /* Set LED to indicate start of transfer */
     DL_GPIO_setPins(GPIO_LEDS_PORT, GPIO_LEDS_USER_LED_1_PIN);
 
@@ -47,6 +54,27 @@ int main(void)
             ;
         gRxPacket[i] = DL_I2C_receiveTargetData(I2C_INST);
     }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    switch(gRxPacket[0]){
+        case 0x00:
+        
+            uart_debug("GET 0\r\n");
+            // DL_GPIO_togglePins(GPIO_TESTS_PORT,GPIO_TESTS_TESTPIN_PIN);
+            break;
+        case 0x01:
+            uart_debug("GET 1\r\n");
+            break;
+        case 0x02:
+            uart_debug("GET 2\r\n");
+            break;
+
+        default: 
+            uart_debug("unknown command\r\n");
+            break;
+    }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
+
 
     /*
      * Wait until all bytes written to TX FIFO are sent after a successful

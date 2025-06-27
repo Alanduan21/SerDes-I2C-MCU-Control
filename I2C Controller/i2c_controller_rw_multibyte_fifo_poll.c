@@ -10,6 +10,7 @@
  */
 #define I2C_RX_PACKET_SIZE (5)
 
+/// UART debug helper function
 ///////////////////////////////////////////////////////
 void uart_debug(const char *str){
     while(*str)
@@ -27,7 +28,7 @@ void uart_debug(const char *str){
 
 /* Data sent to the Target */
 uint8_t gTxPacket[I2C_TX_PACKET_SIZE] = {
-    0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08};
+    0x00, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08};
 
 /* Data received from Target */
 volatile uint8_t gRxPacket[I2C_RX_PACKET_SIZE];
@@ -38,6 +39,12 @@ volatile uint8_t gRxPacket[I2C_RX_PACKET_SIZE];
 int main(void)
 {
     SYSCFG_DL_init();
+
+    /// initial debug printf
+    ///////////////////////////////////////////////////////
+    uart_debug("Controller is ready!\r\n");
+
+    ///////////////////////////////////////////////////////
 
     /* Set LED to indicate start of transfer */
     DL_GPIO_setPins(GPIO_LEDS_PORT, GPIO_LEDS_USER_LED_1_PIN);
@@ -85,7 +92,8 @@ int main(void)
         while (DL_I2C_isControllerRXFIFOEmpty(I2C_INST));
         gRxPacket[i] = DL_I2C_receiveControllerData(I2C_INST);
     }
-  
+
+
     while (1) {
         DL_GPIO_togglePins(GPIO_LEDS_PORT,
             GPIO_LEDS_USER_LED_1_PIN | GPIO_LEDS_USER_TEST_PIN);
