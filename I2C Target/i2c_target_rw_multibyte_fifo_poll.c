@@ -6,6 +6,8 @@
 
 #define I2C_RX_PACKET_SIZE (8)
 
+int NUMBER = -1;
+
 /* Data sent to Controller in response to Read transfer */
 uint8_t gTxPacket[I2C_TX_PACKET_SIZE] = {'M', 'S', 'P', 'M', '0'};
 
@@ -30,6 +32,13 @@ int main(void)
 {
     SYSCFG_DL_init();
 
+    /// initial debug printf
+    ///////////////////////////////////////////////////////
+    uart_debug("Target is ready!\r\n");
+
+    ///////////////////////////////////////////////////////
+
+
     /* Set LED to indicate start of transfer */
     DL_GPIO_setPins(GPIO_LEDS_PORT, GPIO_LEDS_USER_LED_1_PIN);
 
@@ -48,6 +57,28 @@ int main(void)
         gRxPacket[i] = DL_I2C_receiveTargetData(I2C_INST);
     }
 
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    switch(gRxPacket[0]){
+        case 0x00:
+            NUMBER = 0;
+            DL_GPIO_togglePins(GPIO_TESTS_PORT,GPIO_TESTS_TESTPIN_PIN);
+            delay_cycles(16000000);
+            DL_GPIO_togglePins(GPIO_TESTS_PORT,GPIO_TESTS_TESTPIN_PIN);
+            break;
+        case 0x01:
+            NUMBER = 1;
+            break;
+        case 0x02:
+            NUMBER = 2;
+            break;
+
+        default: 
+            uart_debug("unknown command\r\n");
+            break;
+    }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+
     /*
      * Wait until all bytes written to TX FIFO are sent after a successful
      * request.
@@ -58,7 +89,10 @@ int main(void)
     /* If write and read were successful, toggle LED */
     while (1) {
         DL_GPIO_togglePins(GPIO_LEDS_PORT, GPIO_LEDS_USER_LED_1_PIN);
-        uart_debug("received\r\n");
+
+        char buffer[32];
+        sprintf(buffer, "GET %d\r\n", NUMBER);
+        uart_debug(buffer);
         delay_cycles(16000000);
     }
 }

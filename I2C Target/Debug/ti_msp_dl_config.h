@@ -121,6 +121,12 @@ extern "C" {
 /* Defines for USER_LED_1: GPIOA.26 with pinCMx 27 on package pin 30 */
 #define GPIO_LEDS_USER_LED_1_PIN                                (DL_GPIO_PIN_26)
 #define GPIO_LEDS_USER_LED_1_IOMUX                               (IOMUX_PINCM27)
+/* Port definition for Pin Group GPIO_TESTS */
+#define GPIO_TESTS_PORT                                                  (GPIOA)
+
+/* Defines for TESTPIN: GPIOA.17 with pinCMx 18 on package pin 21 */
+#define GPIO_TESTS_TESTPIN_PIN                                  (DL_GPIO_PIN_17)
+#define GPIO_TESTS_TESTPIN_IOMUX                                 (IOMUX_PINCM18)
 
 /* clang-format on */
 
