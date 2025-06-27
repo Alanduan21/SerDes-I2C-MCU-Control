@@ -1,5 +1,5 @@
-# *.mk
-# *.makefile
+*.mk
+*.makefile
 # *.map
 # *.cmd
 # *.lst
@@ -12,18 +12,19 @@
 # *.elf
 # *.axf
 # /.metadata/
-# /*.launches
+/*.launches
 # *.log
 # *.trace
 # *.stackdump
 # *.bak
 # *.tmp
 # *.swp
-# *.cproject
-# # *.project
-# *.ccsproject
-# *.settings/
-
+*.cproject
+*.project
+*.ccsproject
+*.settings/
+.jxbrowser.userdata/
+.metadata/
 # **/.clangd/
 # **/.clangd/.cache/
 
