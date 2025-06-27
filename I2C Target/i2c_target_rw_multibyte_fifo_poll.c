@@ -6,6 +6,8 @@
 
 #define I2C_RX_PACKET_SIZE (8)
 
+int NUMBER = -1;
+
 /* Data sent to Controller in response to Read transfer */
 uint8_t gTxPacket[I2C_TX_PACKET_SIZE] = {'M', 'S', 'P', 'M', '0'};
 
@@ -58,15 +60,15 @@ int main(void)
     ///////////////////////////////////////////////////////////////////////////////////////////////////
     switch(gRxPacket[0]){
         case 0x00:
-        
-            uart_debug("GET 0\r\n");
-            // DL_GPIO_togglePins(GPIO_TESTS_PORT,GPIO_TESTS_TESTPIN_PIN);
+            NUMBER = 0;
+            DL_GPIO_togglePins(GPIO_TESTS_PORT,GPIO_TESTS_TESTPIN_PIN);
+
             break;
         case 0x01:
-            uart_debug("GET 1\r\n");
+            NUMBER = 1;
             break;
         case 0x02:
-            uart_debug("GET 2\r\n");
+            NUMBER = 2;
             break;
 
         default: 
@@ -86,7 +88,10 @@ int main(void)
     /* If write and read were successful, toggle LED */
     while (1) {
         DL_GPIO_togglePins(GPIO_LEDS_PORT, GPIO_LEDS_USER_LED_1_PIN);
-        uart_debug("received\r\n");
+
+        char buffer[32];
+        sprintf(buffer, "GET %d\r\n", NUMBER);
+        uart_debug(buffer);
         delay_cycles(16000000);
     }
 }
