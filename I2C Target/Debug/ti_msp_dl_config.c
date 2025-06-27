@@ -51,15 +51,18 @@ SYSCONFIG_WEAK void SYSCFG_DL_init(void)
     /* Module-Specific Initializations*/
     SYSCFG_DL_SYSCTL_init();
     SYSCFG_DL_I2C_init();
+    SYSCFG_DL_UART_0_init();
 }
 
 SYSCONFIG_WEAK void SYSCFG_DL_initPower(void)
 {
     DL_GPIO_reset(GPIOA);
     DL_I2C_reset(I2C_INST);
+    DL_UART_Main_reset(UART_0_INST);
 
     DL_GPIO_enablePower(GPIOA);
     DL_I2C_enablePower(I2C_INST);
+    DL_UART_Main_enablePower(UART_0_INST);
     delay_cycles(POWER_STARTUP_DELAY);
 }
 
@@ -68,11 +71,11 @@ SYSCONFIG_WEAK void SYSCFG_DL_GPIO_init(void)
     const uint8_t unusedPinIndexes[] =
     {
         IOMUX_PINCM3, IOMUX_PINCM4, IOMUX_PINCM5, IOMUX_PINCM6,
-        IOMUX_PINCM7, IOMUX_PINCM8, IOMUX_PINCM9, IOMUX_PINCM10,
-        IOMUX_PINCM11, IOMUX_PINCM12, IOMUX_PINCM13, IOMUX_PINCM14,
-        IOMUX_PINCM15, IOMUX_PINCM16, IOMUX_PINCM17, IOMUX_PINCM18,
-        IOMUX_PINCM19, IOMUX_PINCM22, IOMUX_PINCM23, IOMUX_PINCM24,
-        IOMUX_PINCM25, IOMUX_PINCM26, IOMUX_PINCM28
+        IOMUX_PINCM7, IOMUX_PINCM8, IOMUX_PINCM11, IOMUX_PINCM12,
+        IOMUX_PINCM13, IOMUX_PINCM14, IOMUX_PINCM15, IOMUX_PINCM16,
+        IOMUX_PINCM17, IOMUX_PINCM18, IOMUX_PINCM19, IOMUX_PINCM22,
+        IOMUX_PINCM23, IOMUX_PINCM24, IOMUX_PINCM25, IOMUX_PINCM26,
+        IOMUX_PINCM28
     };
 
     for(int i = 0; i < sizeof(unusedPinIndexes)/sizeof(unusedPinIndexes[0]); i++)
@@ -82,18 +85,18 @@ SYSCONFIG_WEAK void SYSCFG_DL_GPIO_init(void)
 
     DL_GPIO_clearPins(GPIOA,
         (DL_GPIO_PIN_2 | DL_GPIO_PIN_3 | DL_GPIO_PIN_4 | DL_GPIO_PIN_5 |
-        DL_GPIO_PIN_6 | DL_GPIO_PIN_7 | DL_GPIO_PIN_8 | DL_GPIO_PIN_9 |
-        DL_GPIO_PIN_10 | DL_GPIO_PIN_11 | DL_GPIO_PIN_12 | DL_GPIO_PIN_13 |
-        DL_GPIO_PIN_14 | DL_GPIO_PIN_15 | DL_GPIO_PIN_16 | DL_GPIO_PIN_17 |
-        DL_GPIO_PIN_18 | DL_GPIO_PIN_21 | DL_GPIO_PIN_22 | DL_GPIO_PIN_23 |
-        DL_GPIO_PIN_24 | DL_GPIO_PIN_25 | DL_GPIO_PIN_27));
+        DL_GPIO_PIN_6 | DL_GPIO_PIN_7 | DL_GPIO_PIN_10 | DL_GPIO_PIN_11 |
+        DL_GPIO_PIN_12 | DL_GPIO_PIN_13 | DL_GPIO_PIN_14 | DL_GPIO_PIN_15 |
+        DL_GPIO_PIN_16 | DL_GPIO_PIN_17 | DL_GPIO_PIN_18 | DL_GPIO_PIN_21 |
+        DL_GPIO_PIN_22 | DL_GPIO_PIN_23 | DL_GPIO_PIN_24 | DL_GPIO_PIN_25 |
+        DL_GPIO_PIN_27));
     DL_GPIO_enableOutput(GPIOA,
         (DL_GPIO_PIN_2 | DL_GPIO_PIN_3 | DL_GPIO_PIN_4 | DL_GPIO_PIN_5 |
-        DL_GPIO_PIN_6 | DL_GPIO_PIN_7 | DL_GPIO_PIN_8 | DL_GPIO_PIN_9 |
-        DL_GPIO_PIN_10 | DL_GPIO_PIN_11 | DL_GPIO_PIN_12 | DL_GPIO_PIN_13 |
-        DL_GPIO_PIN_14 | DL_GPIO_PIN_15 | DL_GPIO_PIN_16 | DL_GPIO_PIN_17 |
-        DL_GPIO_PIN_18 | DL_GPIO_PIN_21 | DL_GPIO_PIN_22 | DL_GPIO_PIN_23 |
-        DL_GPIO_PIN_24 | DL_GPIO_PIN_25 | DL_GPIO_PIN_27));
+        DL_GPIO_PIN_6 | DL_GPIO_PIN_7 | DL_GPIO_PIN_10 | DL_GPIO_PIN_11 |
+        DL_GPIO_PIN_12 | DL_GPIO_PIN_13 | DL_GPIO_PIN_14 | DL_GPIO_PIN_15 |
+        DL_GPIO_PIN_16 | DL_GPIO_PIN_17 | DL_GPIO_PIN_18 | DL_GPIO_PIN_21 |
+        DL_GPIO_PIN_22 | DL_GPIO_PIN_23 | DL_GPIO_PIN_24 | DL_GPIO_PIN_25 |
+        DL_GPIO_PIN_27));
 
     DL_GPIO_initPeripheralInputFunctionFeatures(GPIO_I2C_IOMUX_SDA,
         GPIO_I2C_IOMUX_SDA_FUNC, DL_GPIO_INVERSION_DISABLE,
@@ -105,6 +108,11 @@ SYSCONFIG_WEAK void SYSCFG_DL_GPIO_init(void)
         DL_GPIO_WAKEUP_DISABLE);
     DL_GPIO_enableHiZ(GPIO_I2C_IOMUX_SDA);
     DL_GPIO_enableHiZ(GPIO_I2C_IOMUX_SCL);
+
+    DL_GPIO_initPeripheralOutputFunction(
+        GPIO_UART_0_IOMUX_TX, GPIO_UART_0_IOMUX_TX_FUNC);
+    DL_GPIO_initPeripheralInputFunction(
+        GPIO_UART_0_IOMUX_RX, GPIO_UART_0_IOMUX_RX_FUNC);
 
     DL_GPIO_initDigitalOutput(GPIO_LEDS_USER_LED_1_IOMUX);
 
@@ -153,5 +161,37 @@ SYSCONFIG_WEAK void SYSCFG_DL_I2C_init(void) {
     DL_I2C_enableTarget(I2C_INST);
 
 
+}
+
+static const DL_UART_Main_ClockConfig gUART_0ClockConfig = {
+    .clockSel    = DL_UART_MAIN_CLOCK_BUSCLK,
+    .divideRatio = DL_UART_MAIN_CLOCK_DIVIDE_RATIO_1
+};
+
+static const DL_UART_Main_Config gUART_0Config = {
+    .mode        = DL_UART_MAIN_MODE_NORMAL,
+    .direction   = DL_UART_MAIN_DIRECTION_TX_RX,
+    .flowControl = DL_UART_MAIN_FLOW_CONTROL_NONE,
+    .parity      = DL_UART_MAIN_PARITY_NONE,
+    .wordLength  = DL_UART_MAIN_WORD_LENGTH_8_BITS,
+    .stopBits    = DL_UART_MAIN_STOP_BITS_ONE
+};
+
+SYSCONFIG_WEAK void SYSCFG_DL_UART_0_init(void)
+{
+    DL_UART_Main_setClockConfig(UART_0_INST, (DL_UART_Main_ClockConfig *) &gUART_0ClockConfig);
+
+    DL_UART_Main_init(UART_0_INST, (DL_UART_Main_Config *) &gUART_0Config);
+    /*
+     * Configure baud rate by setting oversampling and baud rate divisors.
+     *  Target baud rate: 115200
+     *  Actual baud rate: 115211.52
+     */
+    DL_UART_Main_setOversampling(UART_0_INST, DL_UART_OVERSAMPLING_RATE_16X);
+    DL_UART_Main_setBaudRateDivisor(UART_0_INST, UART_0_IBRD_32_MHZ_115200_BAUD, UART_0_FBRD_32_MHZ_115200_BAUD);
+
+
+
+    DL_UART_Main_enable(UART_0_INST);
 }
 

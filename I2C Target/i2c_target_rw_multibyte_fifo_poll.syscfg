@@ -51,9 +51,12 @@ I2C1.sclPinConfig.passedPeripheralType = scripting.forceWrite("Digital");
 SYSCTL.powerPolicy = "STOP0";
 SYSCTL.clockTreeEn = true;
 
-UART1.$name             = "UART_0";
-UART1.txPinConfig.$name = "ti_driverlib_gpio_GPIOPinGeneric2";
-UART1.rxPinConfig.$name = "ti_driverlib_gpio_GPIOPinGeneric3";
+UART1.$name                    = "UART_0";
+UART1.targetBaudRate           = 115200;
+UART1.peripheral.rxPin.$assign = "PA9";
+UART1.peripheral.txPin.$assign = "PA8";
+UART1.txPinConfig.$name        = "ti_driverlib_gpio_GPIOPinGeneric2";
+UART1.rxPinConfig.$name        = "ti_driverlib_gpio_GPIOPinGeneric3";
 
 /**
  * Pinmux solution for unlocked pins/peripherals. This ensures that minor changes to the automatic solver in a future
@@ -64,5 +67,3 @@ Board.peripheral.$suggestSolution          = "DEBUGSS";
 Board.peripheral.swclkPin.$suggestSolution = "PA20";
 Board.peripheral.swdioPin.$suggestSolution = "PA19";
 UART1.peripheral.$suggestSolution          = "UART0";
-UART1.peripheral.rxPin.$suggestSolution    = "PA18";
-UART1.peripheral.txPin.$suggestSolution    = "PA17/OPA1.IN0-";
