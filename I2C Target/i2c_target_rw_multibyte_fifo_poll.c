@@ -62,7 +62,8 @@ int main(void)
         case 0x00:
             NUMBER = 0;
             DL_GPIO_togglePins(GPIO_TESTS_PORT,GPIO_TESTS_TESTPIN_PIN);
-
+            delay_cycles(16000000);
+            DL_GPIO_togglePins(GPIO_TESTS_PORT,GPIO_TESTS_TESTPIN_PIN);
             break;
         case 0x01:
             NUMBER = 1;
