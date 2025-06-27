@@ -44,6 +44,59 @@
                     ]
                 }
             ]
+        },
+        {
+            "name": "GPIO_Toggle",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "GPIO_Toggle",
+                "resourceId": "/GPIO_Toggle"
+            },
+            "connections": [
+                {
+                    "name": "Texas Instruments XDS110 USB Debug Probe",
+                    "cores": [
+                        {
+                            "name": "CORTEX_M0P",
+                            "debuggerSettings": {
+                                "data": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\" ?>\n<PropertyValues>\n\n  <property id=\"ClearBreakpointsOnLoad\">\n    <curValue>1</curValue>\n  </property>\n\n  <property id=\"AddCEXITbreakpointAfterLoad\">\n    <curValue>0</curValue>\n  </property>\n\n  <property id=\"AddCIOBreakpointAfterLoad\">\n    <curValue>1</curValue>\n  </property>\n\n  <property id=\"PreventStepIntoAsm\">\n    <curValue>1</curValue>\n  </property>\n\n  <property id=\"AutoRunToLabelName\">\n    <curValue></curValue>\n  </property>\n\n  <property id=\"AutoRunToLabelOnRestart\">\n    <curValue>1</curValue>\n  </property>\n\n  <property id=\"HaltOnConnect\">\n    <curValue>1</curValue>\n  </property>\n\n  <property id=\"FlashFiles\">\n    <curValue></curValue>\n  </property>\n\n</PropertyValues>\n"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "I2C Controller",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "I2C Controller",
+                "resourceId": "/I2C Controller"
+            },
+            "connections": [
+                {
+                    "name": "Texas Instruments XDS110 USB Debug Probe",
+                    "cores": [
+                        {
+                            "name": "CORTEX_M0P",
+                            "debuggerSettings": {
+                                "data": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\" ?>\n<PropertyValues>\n\n  <property id=\"AutoRunToLabelName\">\n    <curValue></curValue>\n  </property>\n\n  <property id=\"FlashFiles\">\n    <curValue></curValue>\n  </property>\n\n</PropertyValues>\n"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "I2C Target",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "I2C Target",
+                "resourceId": "/I2C Target"
+            }
         }
     ]
 }
