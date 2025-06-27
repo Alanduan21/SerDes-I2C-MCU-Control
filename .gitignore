@@ -25,6 +25,7 @@
 *.settings/
 .jxbrowser.userdata/
 .metadata/
+/debug/
 # **/.clangd/
 # **/.clangd/.cache/
 

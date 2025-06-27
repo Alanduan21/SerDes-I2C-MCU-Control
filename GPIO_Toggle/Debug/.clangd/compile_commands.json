@@ -2,11 +2,11 @@
    {
       "directory" : "C:/Users/uih32851/workspace_ccstheia/GPIO_Toggle/Debug",
       "command"   : "clang++ -D__MSPM0L1306__ -I\"C:/Users/uih32851/workspace_ccstheia/GPIO_Toggle\" -I\"C:/Users/uih32851/workspace_ccstheia/GPIO_Toggle/Debug\" -I\"C:/ti/mspm0_sdk_2_05_00_05/source/third_party/CMSIS/Core/Include\" -I\"C:/ti/mspm0_sdk_2_05_00_05/source\" -isystem\"C:/ti/ccs2020/ccs/tools/compiler/ti-cgt-armllvm_4.0.3.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"C:/ti/ccs2020/ccs/tools/compiler/ti-cgt-armllvm_4.0.3.LTS/include/c++/v1\" -isystem\"C:/ti/ccs2020/ccs/tools/compiler/ti-cgt-armllvm_4.0.3.LTS/lib/clang/18/include\" -isystem\"C:/ti/ccs2020/ccs/tools/compiler/ti-cgt-armllvm_4.0.3.LTS/include/c\" -xc",
-      "file"      : "C:/Users/uih32851/workspace_ccstheia/GPIO_Toggle/gpio_toggle_output.c"
+      "file"      : "C:/Users/uih32851/workspace_ccstheia/GPIO_Toggle/Debug/ti_msp_dl_config.c"
    },
    {
       "directory" : "C:/Users/uih32851/workspace_ccstheia/GPIO_Toggle/Debug",
       "command"   : "clang++ -D__MSPM0L1306__ -I\"C:/Users/uih32851/workspace_ccstheia/GPIO_Toggle\" -I\"C:/Users/uih32851/workspace_ccstheia/GPIO_Toggle/Debug\" -I\"C:/ti/mspm0_sdk_2_05_00_05/source/third_party/CMSIS/Core/Include\" -I\"C:/ti/mspm0_sdk_2_05_00_05/source\" -isystem\"C:/ti/ccs2020/ccs/tools/compiler/ti-cgt-armllvm_4.0.3.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"C:/ti/ccs2020/ccs/tools/compiler/ti-cgt-armllvm_4.0.3.LTS/include/c++/v1\" -isystem\"C:/ti/ccs2020/ccs/tools/compiler/ti-cgt-armllvm_4.0.3.LTS/lib/clang/18/include\" -isystem\"C:/ti/ccs2020/ccs/tools/compiler/ti-cgt-armllvm_4.0.3.LTS/include/c\" -xc",
-      "file"      : "C:/Users/uih32851/workspace_ccstheia/GPIO_Toggle/Debug/ti_msp_dl_config.c"
+      "file"      : "C:/Users/uih32851/workspace_ccstheia/GPIO_Toggle/gpio_toggle_output.c"
    }
 ]
